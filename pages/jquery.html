@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>jQuery</title>
+		<style type="text/css">
+			body {
+				font-size: 13px;
+				line-height: 25px;
+			}
+			
+			table {
+				border-top: 1px solid #333;
+				border-left: 1px solid #333;
+				width: 300px;
+			}
+			
+			td {
+				border-right: 1px solid #333;
+				border-bottom: 1px solid #333;
+			}
+			
+			.center {
+				text-align: center;
+			}
+		</style>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<script>
+			function addRow() {
+				//219970544-郑北东
+				$(document).ready(function() {
+				    var newRow = $("<tr></tr>"); 
+				    var col1 = $("<td></td>").text("幸福从天而降"); 
+				    var col2 = $("<td></td>").html("&yen;18.50").attr("align", "center"); 
+				    newRow.append(col1, col2); 
+				    $("#row1").parent().find("#row3").before(newRow); 
+				});
+
+			}
+			// 219970544-郑北东
+			function updateRow() {
+				$("#row1").css({ 
+					"font-weight":"bold",
+					"text-align":"center",
+					"background-color": "#1aa034"
+				});
+			}
+			// 219970544-郑北东
+			function delRow() {
+				//通过定位row2的后一个进行删除第二行的操作
+				$(".row2 + tr").remove();
+
+			}
+			// 219970544-郑北东
+			function copyRow() {
+				//克隆最后一行
+				var oldRow = $("tr:last");
+				var newRow = oldRow.clone();
+	
+				$("#myTable").append(newRow);
+				}
+
+		</script>
+	</head>
+
+	<body>
+		<table border="0" cellspacing="0" cellpadding="0" id="myTable">
+			<tr id="row1">
+				<td>书名</td>
+				<td>价格</td>
+			</tr>
+			<tr id="row2" class="row2">
+				<td>看得见风景的房间</td>
+				<td class="center">&yen;30.00</td>
+			</tr>
+			<tr id="row3" c>
+				<td>60个瞬间</td>
+				<td class="center">&yen;32.00</td>
+			</tr>
+		</table>
+		<input name="b1" type="button" value="增加一行" onclick="addRow()" />
+		<input name="b2" type="button" value="删除第2行" onclick="delRow()" />
+		<input name="b3" type="button" value="修改标题样式" onclick="updateRow()" />
+		<input name="b4" type="button" value="复制最后一行" onclick="copyRow()" />
+
+	</body>
+
+</html>
