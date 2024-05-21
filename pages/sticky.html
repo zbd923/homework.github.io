@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>粘性侧边栏</title>
+<style>*{margin:0;padding:0;}
+ul,li{list-style:none;}
+.header{padding:50px 0;font-size:50px;color:#000;text-align:center;overflow:hidden;background:#ccc;}
+.footer{padding:100px 0;font-size:50px;color:#fff;text-align:center;overflow:hidden;background:#000;}
+.main{position:relative;margin:100px auto;width:1300px;overflow:hidden;}
+.siderBar{float:left;width:25%;}
+.siderBar li{margin-bottom:1px;padding:20px;line-height:50px;font-size:18px;background:#f0f0f0;cursor:pointer;transition:all .5s;}
+.siderBar li.cur{color:#fff;background:#000;}
+.content{float:right;width:70%;}
+.content .item{padding:300px 0;font-size:50px;color:#fff;text-align:center;overflow:hidden;}
+</style>
+</head>
+<body>
+<header class="header">
+	header
+</header>
+<main class="main">
+	<div class="siderBar">
+		<div class="menu">
+			<ul>
+				<li data-href="#s1">栏目一</li>
+				<li data-href="#s2">栏目二</li>
+				<li data-href="#s3">栏目三</li>
+				<li data-href="#s4">栏目四</li>
+				<li data-href="#s5">栏目五</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+		<div id="s1" class="item" style="background:#999;">一</div>
+		<div id="s2" class="item" style="background:#888;">二</div>
+		<div id="s3" class="item" style="background:#777;">三</div>
+		<div id="s4" class="item" style="background:#666;">四</div>
+		<div id="s5" class="item" style="background:#555;">五</div>
+	</div>
+</main>
+<footer class="footer">
+	footer
+</footer>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.sticky-sidebar.min.js"></script>
+<script>
+var a = new StickySidebar('.siderBar', {
+    topSpacing: 20,
+    bottomSpacing: 20,
+    containerSelector: '.content',
+    innerWrapperSelector: '.menu'
+});
+
+//点击导航栏滑动到对应板块
+$('.menu li').eq(0).addClass('cur');
+$('.menu li').on('click',function(){
+	$(this).addClass('cur').siblings().removeClass('cur');
+	var index = $(this).attr('data-href');
+	var elOffset = $(index).offset().top;
+	$('html,body').animate({'scrollTop':elOffset}, 800);
+})
+
+
+//创建页面滚动完成之后的回调事件
+$.fn.scrollEnd = function(callback, timeout) {          
+  	$(this).scroll(function(){
+	    var $this = $(this);
+	    if ($this.data('scrollTimeout')) {
+	      	clearTimeout($this.data('scrollTimeout'));
+	    }
+	    $this.data('scrollTimeout', setTimeout(callback,timeout));
+  	});
+};
+ 
+//with a 1000ms timeout
+$(window).scrollEnd(function(){
+    var ST = $(this).scrollTop();
+	$('.item').each(function(){
+		var elOffset = $(this).offset().top;
+		if(ST >= elOffset){
+			var index = $(this).index();
+			$('.menu li').eq(index).addClass('cur').siblings().removeClass('cur');
+		}
+	})
+}, 0);
+</script>
+</body>
+</html>
