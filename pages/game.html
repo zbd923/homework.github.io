@@ -9,7 +9,7 @@
 <body>
     <div class="all">
         <div class="move">
-            <img id="player" src="../img/player_right.gif" style="height: 200px;">
+            <img id="player" src="../images/player_right.gif" style="height: 200px;">
         </div>
         <div class="attention">
             <p>操作方式：</p>
@@ -41,21 +41,21 @@
                     var playerX = $("#player").position().left;
                     if (x < playerX) {
                         if (!isTransformed) {
-                            $("#player").attr("src", "../img/player_left.gif");
+                            $("#player").attr("src", "../images/player_left.gif");
                         }
                     } else {
                         if (!isTransformed) {
-                            $("#player").attr("src", "../img/player_right.gif");
+                            $("#player").attr("src", "../images/player_right.gif");
                         }
                     }
                 }
                 // 右键点击
 				//219970544-郑北东
                 else if (event.which === 3) { // 3代表右键
-                    $("#player").attr("src", "../img/player1.gif");
+                    $("#player").attr("src", "../images/player1.gif");
                     
                     setTimeout(function() {
-                        $("#player").attr("src", "../img/player_right.gif");
+                        $("#player").attr("src", "../images/player_right.gif");
                     }, 3000);
                 }
             });
@@ -64,10 +64,10 @@
 			//219970544-郑北东
             $(".move").on("dblclick", function(event) {
                 if (!isTransformed) {
-                    $("#player").attr("src", "../img/player2.gif");
+                    $("#player").attr("src", "../images/player2.gif");
                     isTransformed = true;
                 } else {
-                    $("#player").attr("src", "../img/player_right.gif");
+                    $("#player").attr("src", "../images/player_right.gif");
                     isTransformed = false;
                 }
             });
