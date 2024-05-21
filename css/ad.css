@@ -1,0 +1,52 @@
+*{
+            margin: auto; 
+            padding:0px;  
+        }
+        
+        .top{
+            margin: auto; 
+            padding:0px;
+            width:800px;/* 盒子宽度 */
+            height: 1800px;/* 盒子高度 */
+            border: solid 3px #8b8b8b;/* 设置边框 */
+            background-color: #cecece;/* 背景颜色 */
+        }
+        h2{
+            font-size:30px;
+            font-weight: 500;
+            text-align: center;
+            color: #333;
+        }
+        
+        #ad1{
+            position: fixed;/* 设置位置 */
+            top: 10px;/* 顶部间距 */
+            left: 0;/* 靠左 */
+            z-index: 1000;
+        }
+        #ad2{
+            position: fixed;
+            top: 10px;
+            right: 0;/* 靠右 */
+            z-index: 1000;
+        }
+		#ad3 {
+		    position: fixed;
+		    bottom: -300px; /* 广告3初始位置设置在屏幕外 */
+		    right: 0;
+		    z-index: 1000;
+		}
+		
+		.ad-container {
+		    position: relative;
+		    transition: bottom 0.5s ease; /* 添加过渡效果 */
+		}
+		
+		.close-btn {
+		    position: absolute;
+		    top: 5px;
+		    right: 5px;
+		    cursor: pointer;
+		    color: #cb2d01;
+		    font-weight: 1000;
+		}
