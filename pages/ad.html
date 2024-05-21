@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Web广告页面(实验四)</title>
+	<link rel="stylesheet" href="./css/ad.css" />
+</head>
+<body>
+	<!-- 广告1 -->
+    <div class="ad-container" id="ad1">
+		<!-- 关闭按钮 -->
+            <span class="close-btn" onclick="closeAd('ad1')">关闭</span>
+			<!-- 广告图片 -->
+            <img src="./images/ad1.png" width="150px">
+        </div>
+		
+	<!-- 正文内容 -->
+    <div class="top">
+        <h2>年轻人涌入道观：打太极、拜神，安顿身心</h2>
+        <p>这里是文章内容</p>
+		<img src="./images/taiji.png" width="500px">
+		<p>这里是文章内容</p>
+		<img src="./images/baishen.png" width="500px">
+		<p>这里是文章内容</p>
+		<p>这里是文章内容</p>
+    </div>
+	
+    <!-- 广告2 -->
+    <div class="ad-container" id="ad2">
+        <span class="close-btn" onclick="closeAd('ad2')">关闭</span>
+        <img src="./images/ad2.png" width="150px">
+    </div>
+	
+	<!-- 广告3：弹出广告 -->
+	<div class="ad-container" id="ad3">
+	    <span class="close-btn" onclick="closeAd('ad3')">关闭</span>
+	    <img src="./images/ad3.png" width="300px">
+	</div>
+</body>
+<script>
+    // 延迟显示广告3
+    setTimeout(function() {
+        let ad3 = document.getElementById('ad3');
+        ad3.style.bottom = "10px"; // 广告3显示在屏幕底部
+    }, 3000); // 3秒后显示广告3
+    
+    function closeAd(adId) {
+        let ad = document.getElementById(adId);
+        ad.style.display = "none"; // 隐藏广告
+    }
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>打印形状</title>
+	</head>
+	<body>
+		<script>
+			document.write("<h3>三角形:</h3>");
+			for(var i = 1;i <= 5;i++){       //行数
+				for(var j=1;j <= i;j++){     //列数
+					document.write("※");
+				}
+				document.write("<br>");      //每行输出后换行；
+			}
+			// 219970544--郑北东
+			document.write("<h3>平行四边形:</h3>");
+			for(var i = 1;i <= 5;i++){
+				for(var j = 1;j <= 5-i;j++){
+					document.write("&nbsp;&nbsp");  //用于形成空格间距
+				}
+				for(var k = 1;k <= 5;k++){
+					document.write("※");
+				}
+				document.write("<br>");
+			}
+			// 219970544--郑北东
+			document.write("<h3>菱形：</h3>");
+			for(var i=0;i<3;i++){           //控制上半部分菱形的行数，逐行递增
+			    for(var j=3;j>i;j--){
+			        document.writeln("&nbsp;&nbsp;&nbsp;");
+			    }
+			    for(var k=0;k<2*i+1;k++){
+			        document.writeln("※");
+			    }
+			        document.writeln("</br>");
+			    } 
+			    for(var i=2;i>0;i--){      //控制下半部分菱形的行数，逐行递减
+			        for(var j=3;j>=i;j--){
+			            document.writeln("&nbsp;&nbsp;&nbsp;");
+			        }
+			        for(var k=0;k<2*i-1;k++){
+			            document.writeln("※");
+			        }
+			        document.writeln("</br>")
+			}
+		</script>
+	</body>
+</html>

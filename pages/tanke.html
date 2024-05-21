@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>让坦克开起来</title>
+    <style type="text/css">
+        input { font-size: 26px; margin-top: 20px; }
+        body { background-image: url("../images/grassland.png"); }
+        #mytank { position: absolute; left: 10px; top: 100px; }
+    </style>
+</head>
+<body>
+    <img id="mytank" src="../images/right.png" />
+
+    <script>
+		
+        var tank = document.getElementById("mytank");
+        var tankPositionX = 10;
+        var tankPositionY = 100;
+        var moveStep = 20;
+		
+		alert("使用键盘上的箭头键来移动坦克：\n" +
+		              "A：向左移动\n" +
+		              "W：向上移动\n" +
+		              "D：向右移动\n" +
+		              "S：向下移动");
+
+        document.addEventListener("keydown", function(event) {
+            var keyCode = event.keyCode;
+
+            switch(keyCode) {
+                case 65: // 左箭头键
+                    moveTankLeft();
+                    tank.src = "../images/left.png";
+                    break;
+                case 87: // 上箭头键
+                    moveTankUp();
+                    tank.src = "../images/up.png";
+                    break;
+                case 68: // 右箭头键
+                    moveTankRight();
+                    tank.src = "../images/right.png";
+                    break;
+                case 83: // 下箭头键
+                    moveTankDown();
+                    tank.src = "../images/down.png";
+                    break;
+            }
+        });
+
+		 // 边界检查：确保坦克不会移出边界
+        function moveTankLeft() {
+            if (tankPositionX > 0) {
+                tank.style.left = (tankPositionX -= moveStep) + "px";
+            }
+        }
+
+        function moveTankUp() {
+            if (tankPositionY > 0) {
+                tank.style.top = (tankPositionY -= moveStep) + "px";
+            }
+        }
+
+        function moveTankRight() {
+            var tankWidth = tank.clientWidth;
+            var screenWidth = window.innerWidth;
+
+            if (tankPositionX + tankWidth < screenWidth) {
+                tank.style.left = (tankPositionX += moveStep) + "px";
+            }
+        }
+
+        function moveTankDown() {
+            var tankHeight = tank.clientHeight;
+            var screenHeight = window.innerHeight;
+
+            if (tankPositionY + tankHeight < screenHeight) {
+                tank.style.top = (tankPositionY += moveStep) + "px";
+            }
+        }
+		
+		//禁用鼠标右键
+		document.addEventListener("contextmenu", function(event) {
+		        event.preventDefault(); // 阻止默认右键菜单
+		    });
+    </script>
+</body>
+</html>
