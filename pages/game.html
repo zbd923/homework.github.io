@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>制作游戏角色</title>
+	<link rel="stylesheet" href="../css/homework.css" />
+    <script src="../js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div class="all">
+        <div class="move">
+            <img id="player" src="../img/player_right.gif" style="height: 200px;">
+        </div>
+        <div class="attention">
+            <p>操作方式：</p>
+            <p>左键：移动</p>
+            <p>右键：攻击</p>
+            <p>双击：变身</p>
+        </div>
+    </div>
+    <script>
+		//219970544-郑北东
+        $(document).ready(function() {
+            // 阻止右键菜单
+            $(".move").on("contextmenu", function(event) {
+                event.preventDefault(); // 阻止默认行为
+            });
+            
+            var isTransformed = false;
+            
+            // 鼠标点击事件处理程序
+            $(".move").on("mousedown", function(event) {
+                // 左键点击
+				//219970544-郑北东
+                if (event.which === 1) { // 1代表左键
+                    var x = event.pageX - $(this).offset().left;
+                    var y = event.pageY - $(this).offset().top;
+                    
+                    $("#player").stop().animate({left: x, top: y}, 3000);
+                    
+                    var playerX = $("#player").position().left;
+                    if (x < playerX) {
+                        if (!isTransformed) {
+                            $("#player").attr("src", "../img/player_left.gif");
+                        }
+                    } else {
+                        if (!isTransformed) {
+                            $("#player").attr("src", "../img/player_right.gif");
+                        }
+                    }
+                }
+                // 右键点击
+				//219970544-郑北东
+                else if (event.which === 3) { // 3代表右键
+                    $("#player").attr("src", "../img/player1.gif");
+                    
+                    setTimeout(function() {
+                        $("#player").attr("src", "../img/player_right.gif");
+                    }, 3000);
+                }
+            });
+            
+            // 鼠标双击事件处理程序
+			//219970544-郑北东
+            $(".move").on("dblclick", function(event) {
+                if (!isTransformed) {
+                    $("#player").attr("src", "../img/player2.gif");
+                    isTransformed = true;
+                } else {
+                    $("#player").attr("src", "../img/player_right.gif");
+                    isTransformed = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
