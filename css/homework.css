@@ -1,0 +1,30 @@
+body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .all {
+            width: 100%;
+            height: 100vh; /* 使用视口单位 */
+            overflow: hidden; /* 清除浮动 */
+        }
+
+        .move {
+            float: left;
+            width: 90%;
+            background-color: #000000;
+            height: 100%; /* 确保子元素填满整个高度 */
+            position: relative; /* 设置相对定位，使得子元素可以使用绝对定位 */
+        }
+
+        .attention {
+            float: right;
+			background-color: #eeffd9;
+            width: 10%;
+            height: 100%; /* 确保子元素填满整个高度 */
+        }
+
+        #player {
+            position: absolute; /* 设置绝对定位，以便准确定位 */
+        }
